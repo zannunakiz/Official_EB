@@ -1,4 +1,4 @@
-> ⚡ **Enigma Blitz**
+**Enigma Blitz**
 > 
 > Serve as the official landing page for [github.com/zannunakiz/Enigma-Blitz](https://github.com/zannunakiz/Enigma-Blitz)
 > 

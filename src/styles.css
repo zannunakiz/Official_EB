@@ -1,0 +1,529 @@
+:root {
+   --bg: #07060b;
+   --ink: #ebe6d8;
+   --acc: #d6ff3d;
+   --dim: color-mix(in srgb, var(--ink) 55%, var(--bg));
+   --line: color-mix(in srgb, var(--ink) 16%, transparent);
+   --serif: 'Instrument Serif', Georgia, serif;
+   --mono: 'JetBrains Mono', ui-monospace, Menlo, monospace;
+
+   box-sizing: border-box;
+   padding-top: env(safe-area-inset-top, 0px);
+   padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+* {
+   box-sizing: border-box;
+   margin: 0;
+}
+
+html {
+   height: 100%;
+   scroll-behavior: smooth;
+   scroll-padding-top: env(safe-area-inset-top, 0px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+   html {
+      scroll-behavior: auto;
+   }
+}
+
+body {
+   transition: background .5s, color .5s;
+   background: var(--bg);
+   color: var(--ink);
+   font-family: var(--mono);
+   font-weight: 300;
+   font-size: 14px;
+   line-height: 1.6;
+   overflow-x: hidden;
+}
+
+#gl {
+   position: fixed;
+   inset: 0;
+   width: 100%;
+   height: 100%;
+   z-index: 0;
+   pointer-events: none;
+}
+
+main,
+nav,
+footer {
+   position: relative;
+   z-index: 1;
+}
+
+nav {
+   position: fixed;
+   top: 0;
+   left: 0;
+   right: 0;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   padding: calc(18px + env(safe-area-inset-top, 0px)) 4vw 18px;
+   color: var(--ink);
+   background: color-mix(in srgb, var(--bg) 72%, transparent);
+   backdrop-filter: blur(10px);
+   border-bottom: 1px solid var(--line);
+   z-index: 5;
+   font-size: 12px;
+   letter-spacing: .14em;
+   text-transform: uppercase;
+}
+
+nav b {
+   font-weight: 500;
+}
+
+nav .brand {
+   background: none;
+   border: 0;
+   padding: 0;
+   color: inherit;
+   font: inherit;
+   letter-spacing: inherit;
+   text-transform: inherit;
+}
+
+nav a {
+   color: inherit;
+   text-decoration: none;
+   border-bottom: 1px solid currentColor;
+   padding-bottom: 2px;
+}
+
+.hero {
+   min-height: 100vh;
+   display: flex;
+   flex-direction: column;
+   justify-content: flex-end;
+   padding: 0 4vw 7vh;
+}
+
+.tag {
+   color: var(--acc);
+   letter-spacing: .2em;
+   text-transform: uppercase;
+   font-size: 11px;
+   margin-bottom: 2vh;
+}
+
+h1 {
+   font-family: var(--serif);
+   font-weight: 400;
+   font-size: clamp(64px, 17vw, 290px);
+   line-height: .82;
+   letter-spacing: -.04em;
+}
+
+h1 i {
+   color: var(--acc);
+   display: block;
+   padding-left: 12vw;
+}
+
+.sub {
+   display: flex;
+   justify-content: space-between;
+   gap: 24px;
+   flex-wrap: wrap;
+   margin-top: 5vh;
+   border-top: 1px solid var(--line);
+   padding-top: 20px;
+}
+
+.sub p {
+   max-width: 38ch;
+   color: var(--dim);
+}
+
+.sub .scroll {
+   color: var(--ink);
+   letter-spacing: .2em;
+   text-transform: uppercase;
+   font-size: 11px;
+}
+
+.tick {
+   overflow: hidden;
+   border-block: 1px solid var(--line);
+   padding: 14px 0;
+   background: color-mix(in srgb, var(--bg) 80%, transparent);
+   backdrop-filter: blur(6px);
+}
+
+.tick div {
+   display: flex;
+   gap: 4rem;
+   white-space: nowrap;
+   width: max-content;
+   font-size: 12px;
+   letter-spacing: .2em;
+   text-transform: uppercase;
+   color: var(--dim);
+}
+
+.tick span::before {
+   content: "◆ ";
+   color: var(--acc);
+}
+
+.manifesto {
+   min-height: 100vh;
+   display: flex;
+   align-items: center;
+   padding: 14vh 4vw;
+}
+
+.manifesto p {
+   font-family: var(--serif);
+   font-size: clamp(30px, 5.4vw, 84px);
+   line-height: 1.06;
+   letter-spacing: -.02em;
+   max-width: 22em;
+}
+
+.manifesto .w {
+   opacity: .14;
+   display: inline-block;
+   margin-right: .24em;
+}
+
+.h {
+   height: 100vh;
+   overflow: hidden;
+   position: relative;
+}
+
+.track {
+   display: flex;
+   width: 300vw;
+   height: 100%;
+}
+
+.panel {
+   width: 100vw;
+   height: 100%;
+   padding: 16vh 4vw 8vh;
+   display: grid;
+   grid-template-columns: 1fr 1fr;
+   gap: 4vw;
+   align-items: end;
+   border-left: 1px solid var(--line);
+}
+
+.panel .n {
+   font-family: var(--serif);
+   font-style: italic;
+   font-size: clamp(120px, 26vw, 420px);
+   line-height: .75;
+   color: transparent;
+   -webkit-text-stroke: 1px var(--ink);
+   opacity: .9;
+}
+
+.panel h2 {
+   font-family: var(--serif);
+   font-weight: 400;
+   font-size: clamp(38px, 6vw, 96px);
+   line-height: .95;
+   margin-bottom: 22px;
+}
+
+.panel h2 em {
+   color: var(--acc);
+}
+
+.panel p {
+   color: var(--dim);
+   max-width: 44ch;
+}
+
+.panel small {
+   display: block;
+   margin-top: 22px;
+   color: var(--acc);
+   letter-spacing: .16em;
+   text-transform: uppercase;
+   font-size: 11px;
+}
+
+.stats {
+   display: grid;
+   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+   border-top: 1px solid var(--line);
+   background: color-mix(in srgb, var(--bg) 82%, transparent);
+   backdrop-filter: blur(8px);
+}
+
+.stats div {
+   padding: 9vh 4vw;
+   border-right: 1px solid var(--line);
+}
+
+.stats b {
+   display: block;
+   font-family: var(--serif);
+   font-weight: 400;
+   font-size: clamp(54px, 8vw, 120px);
+   line-height: 1;
+}
+
+.stats span {
+   color: var(--dim);
+   font-size: 12px;
+   letter-spacing: .14em;
+   text-transform: uppercase;
+}
+
+.cta {
+   min-height: 100vh;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   text-align: center;
+   padding: 14vh 4vw;
+}
+
+.cta h2 {
+   font-family: var(--serif);
+   font-weight: 400;
+   font-size: clamp(48px, 11vw, 200px);
+   line-height: .9;
+   letter-spacing: -.03em;
+}
+
+.cta h2 i {
+   color: var(--acc);
+}
+
+.key {
+   display: flex;
+   margin-top: 6vh;
+   border: 1px solid var(--ink);
+   width: min(560px, 100%);
+}
+
+.key input {
+   flex: 1;
+   min-width: 0;
+   background: transparent;
+   border: 0;
+   color: var(--ink);
+   font: inherit;
+   padding: 18px;
+   outline: none;
+}
+
+.key button {
+   background: var(--acc);
+   color: var(--bg);
+   border: 0;
+   font: 500 12px var(--mono);
+   letter-spacing: .16em;
+   text-transform: uppercase;
+   padding: 0 26px;
+   cursor: pointer;
+}
+
+.key button:hover {
+   filter: brightness(1.12);
+}
+
+.note {
+   margin-top: 16px;
+   color: var(--dim);
+   font-size: 12px;
+   min-height: 20px;
+}
+
+/* download / link buttons — same tokens as the .key bar, wraps on narrow screens */
+.dl {
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
+   gap: 12px;
+   width: min(880px, 100%);
+   margin-top: 6vh;
+}
+
+.dl a {
+   flex: 1 1 220px;
+   cursor: pointer;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   padding: 18px 26px;
+   border: 1px solid var(--ink);
+   color: var(--ink);
+   text-decoration: none;
+   font: 500 12px var(--mono);
+   letter-spacing: .16em;
+   text-transform: uppercase;
+   transition: color .25s, border-color .25s, background .25s, filter .25s;
+}
+
+.dl a.primary {
+   background: var(--acc);
+   border-color: var(--acc);
+   color: var(--bg);
+}
+
+.dl a:not(.primary):hover {
+   color: var(--acc);
+   border-color: var(--acc);
+}
+
+.dl a.primary:hover {
+   filter: brightness(1.12);
+}
+
+.dl a:focus-visible {
+   outline: 1px solid var(--acc);
+   outline-offset: 3px;
+}
+
+footer {
+   display: flex;
+   justify-content: space-between;
+   flex-wrap: wrap;
+   gap: 12px;
+   padding: 24px 4vw calc(24px + env(safe-area-inset-bottom, 0px));
+   border-top: 1px solid var(--line);
+   color: var(--dim);
+   font-size: 11px;
+   letter-spacing: .14em;
+   text-transform: uppercase;
+}
+
+footer .contact {
+   display: flex;
+   align-items: center;
+   flex-wrap: wrap;
+   gap: 16px;
+}
+
+footer .contact a,
+footer .contact button {
+   background: none;
+   color: inherit;
+   border: 0;
+   border-bottom: 1px solid currentColor;
+   padding: 0 0 2px;
+   font: inherit;
+   letter-spacing: inherit;
+   text-transform: inherit;
+   cursor: pointer;
+   transition: color .25s;
+}
+
+footer .contact a:hover,
+footer .contact button:hover {
+   color: var(--acc);
+}
+
+/* while the "Copied !" state is active the email is inert: no pointer, no click */
+footer .contact button:disabled {
+   cursor: not-allowed;
+   color: var(--acc);
+   border-bottom-style: dashed;
+}
+
+.ctl {
+   display: flex;
+   gap: 8px;
+}
+
+.ctl select,
+.ctl button {
+   background: var(--bg);
+   color: var(--ink);
+   border: 1px solid var(--line);
+   font: inherit;
+   font-size: 11px;
+   letter-spacing: .1em;
+   text-transform: uppercase;
+   padding: 7px 10px;
+   cursor: pointer;
+   border-radius: 0;
+   max-width: 52vw;
+}
+
+.ctl select:hover,
+.ctl button:hover,
+.ctl select:focus {
+   border-color: var(--acc);
+   outline: none;
+}
+
+select option {
+   background: var(--bg);
+   color: var(--ink);
+   cursor: pointer;
+}
+
+/* every clickable surface gets the pointer cursor */
+a[href],
+button:not(:disabled),
+select,
+summary,
+[role="button"] {
+   cursor: pointer;
+}
+
+/* custom scrollbars — theme-aware, follows --bg/--ink/--dim/--acc */
+@supports (scrollbar-width: auto) {
+   html {
+      scrollbar-width: thin;
+      scrollbar-color: var(--ink) var(--bg);
+      scrollbar-color: var(--dim) color-mix(in srgb, var(--ink) 10%, var(--bg));
+   }
+}
+
+@supports selector(::-webkit-scrollbar) {
+   ::-webkit-scrollbar {
+      width: 10px;
+      height: 10px;
+   }
+
+   ::-webkit-scrollbar-thumb {
+      background: var(--dim);
+   }
+
+   ::-webkit-scrollbar-thumb:hover {
+      background: var(--acc);
+   }
+
+   ::-webkit-scrollbar-track,
+   ::-webkit-scrollbar-corner {
+      background: color-mix(in srgb, var(--ink) 10%, var(--bg));
+   }
+}
+
+@media (max-width: 760px) {
+
+   nav a,
+   nav b,
+   nav .brand {
+      display: none;
+   }
+
+   nav {
+      justify-content: center;
+   }
+
+   .panel {
+      grid-template-columns: 1fr;
+      align-content: end;
+      padding-bottom: 6vh;
+   }
+
+   .panel .n {
+      font-size: 38vw;
+   }
+}

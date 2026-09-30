@@ -2,6 +2,7 @@ import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Scene from './Scene'
+import Cursor from './Cursor'
 import { TH, S } from './themes'
 import { Toaster, toast } from 'sonner'
 gsap.registerPlugin(ScrollTrigger)
@@ -122,6 +123,7 @@ export default function App() {
   return (
     <div ref={root}>
       <Scene />
+      <Cursor />
       <nav>
         <button type="button" className="brand" onClick={toTop} aria-label="Scroll back to top"><b>Enigma/Blitz</b></button>
         <div className="ctl">
